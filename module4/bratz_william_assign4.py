@@ -1,7 +1,7 @@
 """
 Programmer: William Bratz
-Assignment: Module 6 - Lab
-Date Completed: 9/24/21
+Assignment: Module 4 - Assignment
+Date Completed: 9/18/21
 Course: CITC 2391 - C01
 Instructor: Martin Bell
 """
@@ -11,9 +11,13 @@ def read_data():
     data_list = []
     file_data = open("nutrition_data.csv", "r")
 
+    # as long as the next line isn't empty keep reading
     while file_data.readline() != "":
+        # read the line and strip the newline
         line_data = file_data.readline().rstrip("\n")
+        #split the data into items
         line_items = line_data.split(",")
+        #add items to a list
         data_list.append(line_items)
 
     file_data.close()
@@ -30,14 +34,19 @@ def create_separate_list(main_list, user_choice):
 
     for list in main_list:
         if(list[0] == "Dairy"):
+                # if the first item in the list is dairy add the remaining list items to the dairy list, we don't need the name
                 dairy_list.append(list[1:4])
         elif(list[0] == "Meat"):
+                # if the first item in the list is meat add the remaining list items to the dairy list, we don't need the name
                 protien_list.append(list[1:4])
         elif(list[0] == "Vegetables"):
+                # if the first item in the list is vegetables add the remaining list items to the dairy list, we don't need the name
                 vegetable_list.append(list[1:4])
         elif(list[0] == "Fruit"):
+                # if the first item in the list is fruit add the remaining list items to the dairy list, we don't need the name
                 fruit_list.append(list[1:4])
         elif(list[0] == "Grains"):
+                # if the first item in the list is grains add the remaining list items to the dairy list, we don't need the name
                 grains_list.append(list[1:4])
     
     if(user_choice == 4):
@@ -73,17 +82,22 @@ def main():
         print()
 
         if(user_choice >= 1 and user_choice <= 5):
+            # get the correct list from the user selection
             user_list = create_separate_list(data, user_choice)
 
             print("Name\t\t\tAmount\t\tCalories")
             print("----------------------------------------------------")
+            # for every item in the returned list, write a row with fixed widths
             for item in user_list:
                 print("{: <23} {: <15} {: <20}".format(*item))
 
             print()
 
+            #give the user the option to break out of the loop
             user_continue = input("Would you like to continue? ").lower()
+            print()
             if(user_continue == 'n'):
+                print("Thanks, bye")
                 user_selected = True
         else:
             print("invalid selection, try again")
