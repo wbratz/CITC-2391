@@ -1,3 +1,11 @@
+"""
+Programmer: William Bratz
+Assignment: Module 6 - assignment
+Date Completed: 9/30/21
+Course: CITC 2391 - C01
+Instructor: Martin Bell
+"""
+
 import random
 
 # initialize dictionary
